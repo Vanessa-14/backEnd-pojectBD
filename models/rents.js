@@ -1,20 +1,20 @@
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
-const autoIncrement = require('mongoose-auto-increment');
+//const autoIncrement = require('mongoose-auto-increment');
 
-autoIncrement.initialize(mongoose);
+//autoIncrement.initialize(mongoose);
 
 let Schema = mongoose.Schema;
 
 let rentSchema = new Schema({
 
     codigoCustomer: {
-        type: Schema.Types.ObjectId,
+        type: Schema.Types.String,
         ref: 'Customer',
         required: [true, 'Ingresar el codigo de customer']
     },
     codigoLisre: {
-        type: Schema.Types.ObjectId,
+        type: Schema.Types.String,
         ref: 'listingsAndReviews',
         required: [true, 'Ingresar el codigo de lyr']
     },

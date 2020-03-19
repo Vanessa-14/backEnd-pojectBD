@@ -2,24 +2,6 @@ const express = require('express');
 const Rent = require('../models/rents');
 const app = express();
 
-app.get('/rent', (req, res) => {
-    Rent.find({ Status: true })
-        .populate('codigoCustomer')
-        .populate('codigoLisre')
-        .exec((err, rents) => {
-            if (err) {
-                return res.status(400).json({
-                    ok: false,
-                    err
-                });
-            }
-            return res.status(200).json({
-                ok: true,
-                count: rents.length,
-                rents
-            });
-        });
-});
 
 app.post('/rent', (req, res) => {
     let body = req.body;
@@ -41,6 +23,27 @@ app.post('/rent', (req, res) => {
         });
     });
 });
+
+app.get('/rent', (req, res) => {
+    Rent.find({ Status: true })
+        .populate('codigoCustomer')
+        .populate('codigoLisre')
+        .exec((err, rents) => {
+            if (err) {
+                return res.status(400).json({
+                    ok: false,
+                    err
+                });
+            }
+            return res.status(200).json({
+                ok: true,
+                count: rents.length,
+                rents
+            });
+        });
+});
+
+
 
 app.put('/rent/:id', (req, res) => {
     let id = req.params.id;

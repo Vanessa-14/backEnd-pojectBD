@@ -10,6 +10,7 @@ app.use(bodyParser.json());
 
 app.use(require('./routes/customers'));
 app.use(require('./routes/listingsAndReviews'));
+app.use(require('./routes/rents'));
 
 mongoose.connect('mongodb://localhost:27017/sample_airbnb', {
         useNewUrlParser: true,
