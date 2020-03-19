@@ -23,7 +23,10 @@ let listingsAndReviewsSchema = new Schema({
     Status: {
         type: Boolean,
         default: true
-    }
+    },
+
+}, {
+    collection: "listingsAndReviews"
 });
 listingsAndReviewsSchema.plugin(uniqueValidator, {
     message: '{PATH} Debe ser único y diferente'
